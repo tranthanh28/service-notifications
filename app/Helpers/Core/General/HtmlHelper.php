@@ -38,6 +38,7 @@ class HtmlHelper
      */
     public function style($url, $attributes = [], $secure = null)
     {
+        $secure = $secure ?? env("SECURE", null);
         $defaults = ['media' => 'all', 'type' => 'text/css', 'rel' => 'stylesheet'];
 
         $attributes = $attributes + $defaults;
@@ -58,6 +59,7 @@ class HtmlHelper
      */
     public function script($url, $attributes = [], $secure = null)
     {
+        $secure = $secure ?? env("SECURE", null);
         $attributes['src'] = $this->url->asset($url, $secure);
 
         return $this->toHtmlString('<script'.$this->attributes($attributes).'></script>'.PHP_EOL);
