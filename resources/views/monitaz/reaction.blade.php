@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('default.advance_datatable'))
+@section('title', 'Reactions')
 
 @section('contents')
     <reaction-component></reaction-component>

@@ -90,7 +90,7 @@
         data() {
             return {
                 urlGenerator,
-                login: {email: 'admin@demo.com', password: '123456'},
+                login: {email: '', password: ''},
             };
         },
         methods: {
