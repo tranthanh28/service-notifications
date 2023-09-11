@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Exception;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Class AppServiceProvider.
@@ -52,6 +53,10 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 session()->forget('lang-rtl');
             }
+        }
+
+        if(env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
         }
 
         // Force SSL in production

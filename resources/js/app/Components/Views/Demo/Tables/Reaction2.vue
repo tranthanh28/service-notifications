@@ -63,6 +63,7 @@
         </el-form-item>
         <el-form-item label="File" :label-width="formLabelWidth">
           <el-upload
+              action=""
               class="upload-demo"
               style="height: 50px;"
               ref="upload"
@@ -207,7 +208,6 @@ export default {
       this.startLoading()
       axios.get(`/api/reaction/?page=${page}`).then((response) => {
         this.stopLoading()
-        console.log(response)
         this.data = response.data.data
         // this.totalPages = response.data.data.total
         // this.perPage = response.data.data.per_page
@@ -216,9 +216,6 @@ export default {
         this.stopLoading()
         this.handleErrorNotPermission(errors)
       })
-    },
-    handleDelete(index, row) {
-      console.log(index, row);
     }
   }
 

@@ -75,7 +75,6 @@ export default {
         // Add active class to nav-link based on url dynamically
         function addActiveClass(element) {
           if (element.attr('href').indexOf(current) !== -1) {
-            console.log('Adding active class')
             element.parents('.nav-item').last().addClass('active');
             if (sidebarType === 'floating') {
               if (element.parents('.sub-menu').length) {
