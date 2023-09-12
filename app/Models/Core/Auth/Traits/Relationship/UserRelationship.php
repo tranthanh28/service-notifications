@@ -2,7 +2,6 @@
 
 namespace App\Models\Core\Auth\Traits\Relationship;
 
-use App\Models\App\Chat\Message;
 use App\Models\App\User\SocialLink;
 use App\Models\Core\Auth\PasswordHistory;
 use App\Models\Core\Auth\Profile;
@@ -72,10 +71,5 @@ trait UserRelationship
     {
         return $this->belongsToMany(SocialLink::class, 'user_social_link', 'user_id', 'social_link_id')->withPivot('link');
 
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(Message::class, 'receiver_id');
     }
 }

@@ -4,15 +4,12 @@ use App\Http\Controllers\App\PaymentMethod\PaypalController;
 use App\Http\Controllers\App\PaymentMethod\RazorpayController;
 use App\Http\Controllers\App\PaymentMethod\StripeController;
 use App\Http\Controllers\App\SamplePage\ReportController;
-use App\Http\Controllers\App\SamplePage\KanbanView\StageController;
 
 
 
 // Report
 Route::get('reports', [ReportController::class, 'index'])->name('report.index');
 
-// Kanban-view task management
-Route::get('stages', [StageController::class, 'index'])->name('stages.index');
 
 Route::get('stripe-status', [StripeController::class, 'stripeStatus'])
     ->name('payment_method.stripe-status');
