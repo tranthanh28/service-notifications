@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Monitaz;
 
-use App\Exports\Billar\ExpenseExport;
-use App\Exports\Readykit\CrudExport;
-use App\Filters\App\Crud\CrudFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\App\CrudRequest as Request;
 use App\Models\App\Crud\Crud;
@@ -14,15 +11,9 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CrudController extends Controller
 {
-    /**
-     * CrudController constructor.
-     * @param CrudService $service
-     * @param CrudFilter $filter
-     */
-    public function __construct(CrudService $service, CrudFilter $filter)
+    public function __construct(CrudService $service)
     {
         $this->service = $service;
-        $this->filter = $filter;
     }
 
     /**
@@ -112,20 +103,6 @@ class CrudController extends Controller
         return failed_responses();
     }
 
-    public function getNameFromDatatable()
-    {
-        return $this->service->getName();
-    }
 
-    public function getSelectableName()
-    {
-        return $this->service
-            ->select('id', 'name')
-            ->paginate(request()->get('per_page', 10));
-    }
 
-    public function exportCrud()
-    {
-        return Excel::download(new CrudExport(), 'crud.csv', \Maatwebsite\Excel\Excel::CSV);
-    }
 }

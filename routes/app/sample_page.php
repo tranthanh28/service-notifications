@@ -4,27 +4,15 @@ use App\Http\Controllers\App\PaymentMethod\PaypalController;
 use App\Http\Controllers\App\PaymentMethod\RazorpayController;
 use App\Http\Controllers\App\PaymentMethod\StripeController;
 use App\Http\Controllers\App\SamplePage\ReportController;
-use App\Http\Controllers\App\SamplePage\CalendarController;
-use App\Http\Controllers\App\SamplePage\KanbanView\TaskController;
 use App\Http\Controllers\App\SamplePage\KanbanView\StageController;
 
-Route::view('chat', 'sample-pages.chat');
-Route::view('maps', 'sample-pages.map');
-Route::view('calendar-view', 'sample-pages.calendar-view');
-Route::view('report-view', 'sample-pages.report');
-Route::view('kanban-view', 'sample-pages.kanban-view');
-Route::view('pos-view', 'sample-pages.pos-view');
-Route::view('invoice-page', 'sample-pages.invoice');
 
-// Calendar Events Handling
-Route::resource('calendars', CalendarController::class);
 
 // Report
 Route::get('reports', [ReportController::class, 'index'])->name('report.index');
 
 // Kanban-view task management
 Route::get('stages', [StageController::class, 'index'])->name('stages.index');
-Route::resource('tasks', TaskController::class);
 
 Route::get('stripe-status', [StripeController::class, 'stripeStatus'])
     ->name('payment_method.stripe-status');

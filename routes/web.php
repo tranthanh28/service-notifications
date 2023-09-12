@@ -54,9 +54,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorize']], funct
     include __DIR__ . '/additional.php';
 });
 
-Route::any('install-demo-data', [InstallDemoDataController::class, 'run'])
-    ->name('install-demo-data');
-
 Route::any('symlink', [SymlinkController::class, 'run'])
     ->name('storage.symlink');
 /**

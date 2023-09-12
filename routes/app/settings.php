@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\App\PaymentMethod\PaymentMethodController;
 use App\Http\Controllers\App\Settings\SmsSettingController;
 use App\Http\Controllers\App\Settings\SettingsApiController;
 use App\Http\Controllers\App\Settings\ReCaptchaSettingController;
@@ -28,11 +27,3 @@ Route::post('storage-configuration', [StorageSettingController::class, 'update']
 Route::post('/re-captcha-setting', [ReCaptchaSettingController::class, 'store'])
     ->middleware('can:update_recaptcha_settings')
     ->name('settings.update-recaptcha');
-
-//Payment method
-Route::group([], function () {
-    Route::get('payment-method-status', [PaymentMethodController::class, 'paymentMethodStatus'])
-        ->name('payment_method.status');
-    Route::apiResource('payment-method', PaymentMethodController::class);
-
-});

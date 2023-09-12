@@ -10,11 +10,6 @@ use App\Http\Controllers\App\Notification\NotificationController;
 use App\Http\Controllers\App\Settings\ReCaptchaSettingController;
 use App\Http\Controllers\App\PaymentMethod\StripeController;
 
-Route::get('check', function (){
-    dd(redirect(config('app.url') . '/payment-view'));
-});
-Route::get('/user/registration', [AuthenticateUserController::class, 'registerView']);
-Route::get('/reset/password', [AuthenticateUserController::class, 'resetPasswordView']);
 Route::view('/my-profile', 'user.profile');
 Route::view('/users-and-roles', 'user-roles.user-roles')->name('user-role.list');
 
@@ -40,8 +35,6 @@ Route::post('attach-user/{role}', [UserRoleController::class, 'store']);
 // Sample Pages Routes
 Route::view('/blank-page', 'sample-pages.sample');
 
-// Payment Methods
-Route::view('/payment-view', 'sample-pages.payment-view');
 
 // roles
 Route::get('all-roles', [RoleController::class, 'getAllRoles']);
