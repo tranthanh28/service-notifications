@@ -17,14 +17,13 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-use App\Http\Controllers\Api\ReactionController;
+use App\Http\Controllers\Api\NotificationController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'reaction'], function () {
-    Route::get('/', [ReactionController::class, 'index']);
-    // Route::get('/{id}', [ReactionController::class, 'show']);
-    Route::post('/', [ReactionController::class, 'store']);
-    Route::post('/export-excel', [ReactionController::class, 'exportExcel']);
-    // Route::post('/dowload', [ReactionController::class, 'index']);
-});
 
+Route::group(['prefix' => 'notifications'], function () {
+    Route::group(['prefix' => 'data'], function () {
+        Route::get('/alert-notification', [NotificationController::class, 'alertNotification']);
+        Route::post('/confirm', [NotificationController::class, 'confirm']);
+    });
+});
